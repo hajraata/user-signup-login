@@ -5,7 +5,8 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "./axios";
+import axios from "./axios/axios";
+import "./styles/register.css";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PASS_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -65,7 +66,7 @@ export default function Register() {
     try {
       const res = await axios.post("/add", {
         firstName: user,
-        lastName: pass,
+        lastName: pass, // the api does not have a password field so using this instead.
       });
 
       console.log(res.data);
@@ -103,13 +104,16 @@ export default function Register() {
           </p>
           <h1>Register</h1>
           <form onSubmit={handleSumbit}>
-            <label htmlFor="username">Username: </label>
-            <span className={validName ? "valid" : "hide"}>
-              <FontAwesomeIcon icon={faCheck} style={{ color: "#1a6100" }} />
-            </span>
-            <span className={validName || !user ? "hide" : "invalid"}>
-              <FontAwesomeIcon icon={faXmark} style={{ color: "#940000" }} />
-            </span>
+            <label htmlFor="username">
+              Username:{" "}
+              <span className={validName ? "valid" : "hide"}>
+                <FontAwesomeIcon icon={faCheck} style={{ color: "#1a6100" }} />
+              </span>
+              <span className={validName || !user ? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faXmark} style={{ color: "#940000" }} />
+              </span>{" "}
+            </label>
+
             <input
               type="text"
               id="username"
@@ -129,17 +133,20 @@ export default function Register() {
               }
             >
               <FontAwesomeIcon icon={faInfoCircle} />
-              4 to 24 characters. <br />
+              {"  "}4 to 24 characters. <br />
               Must begin with a letter. <br />
               Letters, numbers, underscores, hyphens allowed.
             </p>
-            <label htmlFor="password">Password:</label>
-            <span className={validPass ? "valid" : "hide"}>
-              <FontAwesomeIcon icon={faCheck} style={{ color: "#1a6100" }} />
-            </span>
-            <span className={validPass || !pass ? "hide" : "invalid"}>
-              <FontAwesomeIcon icon={faXmark} style={{ color: "#940000" }} />
-            </span>
+            <label htmlFor="password">
+              Password:{" "}
+              <span className={validPass ? "valid" : "hide"}>
+                <FontAwesomeIcon icon={faCheck} style={{ color: "#1a6100" }} />
+              </span>
+              <span className={validPass || !pass ? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faXmark} style={{ color: "#940000" }} />
+              </span>
+            </label>
+
             <input
               type="password"
               id="password"
@@ -155,7 +162,7 @@ export default function Register() {
               className={passFocus && !validPass ? "instructions" : "offscreen"}
             >
               <FontAwesomeIcon icon={faInfoCircle} />
-              8 to 24 characters long. <br />
+              {"  "}8 to 24 characters long. <br />
               Must contain lowercase and uppercase letters, a number, and a
               special character. <br />
               Special characters allowed :
@@ -165,13 +172,18 @@ export default function Register() {
               <span aria-label="dollar sign">$</span>
               <span aria-label="percent">%</span>
             </p>
-            <label htmlFor="confirmPass">Confirm Password:</label>
-            <span className={validMatchPass && validPass ? "valid" : "hide"}>
-              <FontAwesomeIcon icon={faCheck} style={{ color: "#1a6100" }} />
-            </span>
-            <span className={validMatchPass || !matchPass ? "hide" : "invalid"}>
-              <FontAwesomeIcon icon={faXmark} style={{ color: "#940000" }} />
-            </span>
+            <label htmlFor="confirmPass">
+              Confirm Password:{" "}
+              <span className={validMatchPass && validPass ? "valid" : "hide"}>
+                <FontAwesomeIcon icon={faCheck} style={{ color: "#1a6100" }} />
+              </span>
+              <span
+                className={validMatchPass || !matchPass ? "hide" : "invalid"}
+              >
+                <FontAwesomeIcon icon={faXmark} style={{ color: "#940000" }} />
+              </span>
+            </label>
+
             <input
               type="password"
               id="confirmPass"
@@ -189,7 +201,7 @@ export default function Register() {
               }
             >
               <FontAwesomeIcon icon={faInfoCircle} />
-              Password and Confirm Password must be the same.
+              {"  "}Password and Confirm Password must be the same.
             </p>
 
             <button

@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #4458bb;
+  color: white;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+section {
+  background-color: #253689;
+  width: 25vw;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  padding: 5vh 0vw;
+  width: 80%;
+  height: 80%;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 2vh;
+}
+
+label,
+input,
+button {
+  width: 80%;
+  margin: auto;
+  height: 5vh;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+input {
+  margin-bottom: 2vh;
+}
+
+button {
+  background-color: white;
+}
+
+button:disabled {
+  color: grey;
+}
+
+button:enabled {
+  color: #253689;
+}
+
+.instructions {
+  background-color: black;
+  padding: 1vh 1vw;
+  width: 80%;
+  height: fit-content;
+  margin: 0vh auto 2vh auto;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.valid .invalid {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
